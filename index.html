@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steel Seals Robotics - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 1rem 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 1.5rem;
+            max-width: 90vw;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #c0c0c0, #e5e5e5, #a0a0a0, #d4d4d4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: metallic-shine 3s ease-in-out infinite;
+        }
+
+        @keyframes metallic-shine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .construction-text {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .description {
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .gears-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gear {
+            font-size: clamp(2rem, 6vw, 3rem);
+            animation: rotate 4s linear infinite;
+            opacity: 0.8;
+        }
+
+        .gear:nth-child(1) {
+            animation-duration: 4s;
+            animation-direction: normal;
+        }
+
+        .gear:nth-child(2) {
+            animation-duration: 6s;
+            animation-direction: reverse;
+        }
+
+        .gear:nth-child(3) {
+            animation-duration: 5s;
+            animation-direction: normal;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .robot-icon {
+            margin: 1.5rem 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo-image {
+            width: clamp(120px, 25vw, 200px);
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #ffd700;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            white-space: nowrap;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float-around 20s linear infinite;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 15%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 25%;
+            right: 10%;
+            animation-delay: 15s;
+        }
+
+        @keyframes float-around {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 25px) rotate(90deg); }
+            50% { transform: translate(25px, 50px) rotate(180deg); }
+            75% { transform: translate(-25px, 25px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                max-width: 95vw;
+            }
+            
+            .logo {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+            
+            .construction-text {
+                font-size: clamp(1.5rem, 8vw, 2rem);
+            }
+            
+            .tagline {
+                font-size: clamp(1rem, 5vw, 1.2rem);
+            }
+            
+            .description {
+                font-size: clamp(0.9rem, 4vw, 1rem);
+                padding: 0 0.5rem;
+            }
+            
+            .contact-info {
+                padding: 1rem;
+                margin: 1.5rem 0.5rem 0 0.5rem;
+            }
+            
+            .social-links a {
+                padding: 0.75rem 1.5rem;
+                font-size: clamp(0.9rem, 4vw, 1rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.75rem;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+            
+            .logo-image {
+                width: clamp(100px, 20vw, 150px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element">🦭</div>
+        <div class="floating-element">🦭</div>
+        <div class="floating-element">🦭</div>
+        <div class="floating-element">🦭</div>
+    </div>
+
+    <div class="container">
+        <div class="logo">STEEL SEALS</div>
+        <div class="tagline">Robotics Team</div>
+        
+        <div class="robot-icon">
+            <img src="SteelSealsLogoV1.png" alt="Steel Seals Logo" class="logo-image">
+        </div>
+        
+        <div class="construction-text">🚧 Under Construction 🚧</div>
+        <div class="description">
+            Our website is currently being built with precision and innovation, just like our robots! 
+            We're working hard to bring you an amazing experience that showcases our team's passion for robotics.
+        </div>
+        
+        <div class="gears-container">
+            <div class="gear">⚙️</div>
+            <div class="gear">⚙️</div>
+            <div class="gear">⚙️</div>
+        </div>
+        
+        <div class="contact-info">
+            <h3>📧 Get in Touch</h3>
+            <p>While we're building, feel free to reach out to our team!</p>
+            <div class="social-links">
+                <a href="mailto:dogeminerdirectory@gmail.com">Email Us</a>
+            </div>
+        </div>
+        
+
+    </div>
+</body>
+</html>
